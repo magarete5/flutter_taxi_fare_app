@@ -102,15 +102,25 @@ class _TaxiFareUiState extends State<TaxiFareUi> {
   // ป้ายชื่อ + ช่องป้อนตัวเลข
   Widget numberField({
     required String label,
+    required String iconAsset,
     required String hintText,
     required TextEditingController controller,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: GoogleFonts.kanit(fontSize: 17, fontWeight: FontWeight.w500),
+        Row(
+          children: [
+            Text(
+              label,
+              style: GoogleFonts.kanit(
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Image.asset(iconAsset, width: 24, height: 24),
+          ],
         ),
         const SizedBox(height: 10),
         TextField(
@@ -186,13 +196,15 @@ class _TaxiFareUiState extends State<TaxiFareUi> {
               ),
               const SizedBox(height: 22),
               numberField(
-                label: 'ระยะทาง (กิโลเมตร) 🛣️',
+                label: 'ระยะทาง (กิโลเมตร)',
+                iconAsset: 'assets/images/road.png',
                 hintText: 'กรุณากรอกระยะทาง',
                 controller: distanceCtrl,
               ),
               const SizedBox(height: 22),
               numberField(
-                label: 'เวลารถติด (นาที) ⏰',
+                label: 'เวลารถติด (นาที)',
+                iconAsset: 'assets/images/clock.png',
                 hintText: 'กรุณากรอกเวลารถติด',
                 controller: trafficCtrl,
               ),
